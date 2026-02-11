@@ -101,6 +101,10 @@ export async function POST(request: NextRequest) {
             isOnline: healthCheck.online,
             lastPingedAt: new Date().toISOString(),
             isDemo: false,
+            birthDate: parseResult.data.candidate.basic_info.birth_date || null,
+            nationality: parseResult.data.candidate.basic_info.nationality || null,
+            education: parseResult.data.candidate.education || null,
+            workHistory: parseResult.data.candidate.work_history || null,
         };
 
         await registerAgent(newAgent);
