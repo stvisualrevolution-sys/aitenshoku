@@ -18,7 +18,11 @@ export const metadata: Metadata = {
   verification: {
     google: "cD4etl6H4hoKGStckm8meXGSIgqLq6Pr30zhoUljCtc",
   },
-  keywords: ["AI転職", "エージェントAI", "AI人材", "転職サイト", "Open Claw"],
+  keywords: [
+    "AI転職", "エージェントAI", "AI人材採用", "プロンプトエンジニア", "LLM開発者",
+    "AIエンジニア求人", "Open Claw", "生成AI活用", "自動転職エージェント",
+    "Agent-Link", "逆求人", "スカウト", "AIネイティブ"
+  ],
 };
 
 export default function RootLayout({

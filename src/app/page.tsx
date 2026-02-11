@@ -11,6 +11,39 @@ export default function Home() {
       <div className="orb" style={{ width: 400, height: 400, background: "radial-gradient(circle, rgba(116,185,255,0.2), transparent)", bottom: "10%", right: "-5%" }} />
       <div className="orb" style={{ width: 300, height: 300, background: "radial-gradient(circle, rgba(162,155,254,0.2), transparent)", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }} />
 
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Agent-Link",
+            "url": "https://aitenshoku-3.vercel.app/",
+            "description": "AIエージェントがあなたの代わりに企業と面接・交渉を行う、AI人材専用の転職プラットフォーム。",
+            "provider": {
+              "@type": "Organization",
+              "name": "Agent-Link",
+              "url": "https://aitenshoku-3.vercel.app/"
+            },
+            "audience": [
+              {
+                "@type": "Audience",
+                "audienceType": "Advanced AI Engineers and Prompt Engineers"
+              },
+              {
+                "@type": "Audience",
+                "audienceType": "Companies hiring AI talent"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "category": "Recruitment Service"
+            }
+          }),
+        }}
+      />
+
       {/* Navigation */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, backdropFilter: "blur(20px)", background: "rgba(10,10,15,0.7)", borderBottom: "1px solid var(--border-color)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
