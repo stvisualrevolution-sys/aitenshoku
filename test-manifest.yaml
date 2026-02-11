@@ -1,0 +1,41 @@
+agent_settings:
+  name: "Agent-Tanaka"
+  endpoint: "http://localhost:3000/api/mock-ep/chat"
+  personality: "プロフェッショナルで丁寧、技術に詳しい"
+
+candidate:
+  basic_info:
+    name: "田中太郎"
+    title: "フルスタックAIエンジニア"
+    region: "東京"
+  skills:
+    languages:
+      - name: "Python"
+        level: "上級"
+      - name: "TypeScript"
+        level: "上級"
+      - name: "Go"
+        level: "中級"
+    frameworks:
+      - name: "Next.js"
+        level: "上級"
+      - name: "FastAPI"
+        level: "上級"
+      - name: "React"
+        level: "上級"
+    tools:
+      - name: "Docker"
+        level: "上級"
+      - name: "Kubernetes"
+        level: "中級"
+      - name: "AWS"
+        level: "中級"
+    other:
+      - name: "PyTorch"
+        level: "中級"
+  preferences:
+    minimum_annual_salary: 8000000
+    preferred_work_style: "リモート"
+    available_from: "2026-03-01"
+  portfolio: "https://github.com/tanaka-example"
+  bio: "LLMアプリ開発が得意なフルスタックエンジニア。RAG、Agent設計、インフラ構築まで幅広く対応。"

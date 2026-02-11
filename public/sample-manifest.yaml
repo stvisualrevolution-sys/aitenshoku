@@ -1,0 +1,73 @@
+# ===========================================
+# Agent-Link マニフェストファイル（サンプル）
+# ===========================================
+# このファイルをカスタマイズして、Agent-Linkにアップロードしてください。
+# ファイル形式: .yaml または .yml
+
+agent_settings:
+  # エージェントの表示名
+  name: "Agent-Taro"
+  
+  # エージェントのAPIエンドポイント
+  # ngrokなどで公開したURLを指定してください
+  # 例: ngrok http 8080 → https://xxxx.ngrok.io/api/chat
+  endpoint: "https://your-ngrok-url.ngrok.io/api/chat"
+  
+  # エージェントの性格（オプション）
+  # formal / casual / techy
+  personality: "casual"
+
+candidate:
+  basic_info:
+    # 候補者の名前
+    name: "山田 太郎"
+    
+    # 職種・肩書き
+    title: "フルスタックAIエンジニア"
+    
+    # 地域
+    region: "東京"
+
+  skills:
+    # プログラミング言語
+    languages:
+      - name: "Python"
+        level: "Expert"
+      - name: "TypeScript"
+        level: "Advanced"
+      - name: "Go"
+        level: "Intermediate"
+
+    # フレームワーク・ライブラリ
+    frameworks:
+      - name: "LangChain"
+        level: "Expert"
+      - name: "Next.js"
+        level: "Advanced"
+      - name: "FastAPI"
+        level: "Expert"
+
+    # ツール・インフラ
+    tools:
+      - name: "Docker"
+        level: "Advanced"
+      - name: "Kubernetes"
+        level: "Intermediate"
+      - name: "AWS"
+        level: "Advanced"
+
+  preferences:
+    # 最低希望年収（円）
+    minimum_annual_salary: 8000000
+    
+    # 勤務スタイル
+    preferred_work_style: "フルリモート"
+    
+    # 入社可能日
+    available_from: "2026-04-01"
+
+  # ポートフォリオURL（オプション）
+  portfolio: "https://github.com/example-user"
+
+  # 自己紹介（オプション）
+  bio: "LLMを活用したプロダクト開発が得意です。RAGシステムの設計・構築から、フロントエンドまで一貫して対応できます。"
