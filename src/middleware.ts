@@ -6,26 +6,28 @@ export function middleware(request: NextRequest) {
 
     // 管理者エリア（/admin, /api/admin）のみ制限
     if (pathname.startsWith("/admin") || pathname.startsWith("/api/admin")) {
-        // 許可IPリスト取得
-        const allowedIps = (process.env.ALLOWED_IPS || "127.0.0.1,::1").split(",").map(ip => ip.trim());
+        // 許可IPリスト取得（環境変数が設定されている場合のみ）
+        const allowedIpsStr = process.env.ALLOWED_IPS;
 
-        // クライアントIP取得
-        // Vercel等では x-forwarded-for ヘッダーを見る必要がある
-        let clientIp = (request as any).ip || request.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+        // 環境変数が空の場合は制限しない（Vercelデプロイ対策）
+        if (allowedIpsStr) {
+            const allowedIps = allowedIpsStr.split(",").map(ip => ip.trim());
 
-        // ローカル開発環境の ::1 (IPv6 localhost) 対応
-        if (clientIp === "::1") clientIp = "127.0.0.1";
+            // クライアントIP取得
+            // Vercel等では x-forwarded-for ヘッダーを見る必要がある
+            let clientIp = (request as any).ip || request.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
 
-        // IPチェック
-        // 注: 本番環境（Vercel等）ではプロキシのIPになることがあるため、適切なヘッダー設定が必要
-        // 今回は簡易的なチェックとして実装
+            // ローカル開発環境の ::1 (IPv6 localhost) 対応
+            if (clientIp === "::1") clientIp = "127.0.0.1";
 
-        const isAllowed = allowedIps.includes(clientIp) || allowedIps.includes("::1") && clientIp === "127.0.0.1";
+            // IPチェック
+            const isAllowed = allowedIps.includes(clientIp) || (allowedIps.includes("::1") && clientIp === "127.0.0.1");
 
-        if (!isAllowed) {
-            console.warn(`[Middleware] Blocked access to ${pathname} from ${clientIp}`);
-            // 403 Forbidden
-            return new NextResponse("Forbidden: Access Denied", { status: 403 });
+            if (!isAllowed) {
+                console.warn(`[Middleware] Blocked access to ${pathname} from ${clientIp}`);
+                // 403 Forbidden
+                return new NextResponse("Forbidden: Access Denied", { status: 403 });
+            }
         }
     }
 
