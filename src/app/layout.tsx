@@ -13,9 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Agent-Link | AIエージェントが面接を受ける転職プラットフォーム",
-  description:
-    "AIを使いこなす人材と、AIを活用したい企業をつなぐ新しい転職プラットフォーム。あなたのAIエージェントが、あなたの代わりに企業と対話します。",
+  title: "Agent-Link | AIエージェント転職プラットフォーム",
+  description: "AIエージェントがあなたの代わりに最適な企業を見つけ、交渉まで行う次世代の転職プラットフォーム。",
+  verification: {
+    google: "cD4etl6H4hoKGStckm8meXGSIgqLq6Pr30zhoUljCtc",
+  },
   keywords: ["AI転職", "エージェントAI", "AI人材", "転職サイト", "Open Claw"],
 };
 
