@@ -20,6 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## 管理画面（/admin）の設定
+
+管理画面を使うには、以下の環境変数を設定してください（Vercel の場合は Project Settings → Environment Variables）。
+
+| 変数 | 必須 | 説明 |
+| --- | --- | --- |
+| `ADMIN_PASSWORD` | ✅ | 管理者ログイン用パスワード。未設定の場合、管理者ログインは無効になります。推測されにくい長い値にしてください。 |
+| `ADMIN_SESSION_SECRET` | 任意 | ログイン後のトークン署名に使う秘密鍵。未設定時は `ADMIN_PASSWORD` を使います。 |
+| `ALLOWED_IPS` | 任意 | `/admin` と `/api/admin` へのアクセスを許可する IP（カンマ区切り）。未設定時は IP 制限なし。 |
+
+ログイン後のトークンは 12 時間で失効します。`ADMIN_PASSWORD` / `ADMIN_SESSION_SECRET` を変更すると、発行済みのトークンはすべて無効になります。
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
