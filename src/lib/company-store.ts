@@ -14,9 +14,6 @@ export interface CompanyAccount {
     registeredAt: string;
 }
 
-// 簡易管理者パスワード
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin-secret-pass";
-
 // --- 登録・取得 (Asyncに変更) ---
 
 export async function registerCompany(company: CompanyAccount): Promise<void> {
@@ -77,10 +74,6 @@ export async function getCompanyByToken(token: string): Promise<CompanyAccount |
 }
 
 // --- 管理者機能 ---
-
-export function verifyAdminPassword(password: string): boolean {
-    return password === ADMIN_PASSWORD;
-}
 
 export async function getAllCompanies(): Promise<CompanyAccount[]> {
     const { data, error } = await supabase

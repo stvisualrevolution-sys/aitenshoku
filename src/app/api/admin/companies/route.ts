@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAllCompanies, approveCompany, rejectCompany, verifyAdminPassword } from "@/lib/company-store";
+import { getAllCompanies, approveCompany, rejectCompany } from "@/lib/company-store";
+import { isAdminRequest } from "@/lib/admin-auth";
 
 export async function GET(request: NextRequest) {
-    // 認証チェック（ヘッダーでパスワードを送る簡易仕様）
-    const authHeader = request.headers.get("Authorization");
-    if (authHeader !== "Bearer admin-session-token") {
+    // 認証チェック（ログイン時に発行した署名トークンを検証）
+    if (!isAdminRequest(request)) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -14,8 +14,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
     // 認証チェック
-    const authHeader = request.headers.get("Authorization");
-    if (authHeader !== "Bearer admin-session-token") {
+    if (!isAdminRequest(request)) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 

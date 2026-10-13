@@ -20,8 +20,8 @@ export default function AdminLogin() {
             const data = await res.json();
 
             if (data.success) {
-                // 簡易トークン保存
-                localStorage.setItem("admin-token", data.token); // "admin-session-token"
+                // 有効期限付きの管理者トークンを保存
+                localStorage.setItem("admin-token", data.token);
                 router.push("/admin/dashboard");
             } else {
                 setError(data.error);
